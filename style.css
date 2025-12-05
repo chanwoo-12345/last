@@ -1,80 +1,84 @@
-/* 기본 초기화 */
+/* ===============================
+   기본 초기화
+================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 예전 감성 배경 */
 body {
   background: #f9f4ff url("bg-paper-grid.png") repeat;
   background-size: 300px 300px;
   font-family: "돋움", Dotum, sans-serif;
   display: flex;
   justify-content: center;
-  padding-top: 70px;
+  padding: 60px 10px;
 }
 
-/* 반듯한 종이 레이어 유지 */
-.paper-layer {
-  position: absolute;
-  width: 1000px;
-  height: 740px;
-  background: white;
-  border: 3px solid #c3b6ff;
-  border-radius: 6px;
+/* ===============================
+   종이 레이어 (반듯하게)
+================================ */
+.memo-layer {
+  background: #f7f0ff;
+  width: 1150px;
+  padding: 45px;
+  border-radius: 14px;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+  position: relative;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
 }
-.layer1 { top: 70px; }
-.layer2 { top: 85px; opacity: 0.95; }
-.layer3 { top: 100px; opacity: 0.90; }
 
-/* 미니홈피 메인 프레임 (예전 감성 크기) */
+.memo-inner {
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+/* ===============================
+   미니홈피 기본 프레임 (예전 버전)
+================================ */
 .mini-home {
   width: 900px;
-  min-height: 650px;
+  min-height: 600px;
   background: #ffffff;
   border: 3px solid #c3b6ff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
   display: grid;
   grid-template-columns: 260px 1fr;
   position: relative;
-  top: 120px;
+  transform: none !important;
 }
 
-
-/* 상단바 */
+/* ===============================
+   상단 바
+================================ */
 .top-bar {
   grid-column: 1 / 3;
   background: linear-gradient(90deg, #fbe5ff, #e0d7ff);
   border-bottom: 1px solid #c3b6ff;
-  padding: 10px 20px;
-  height: 42px;
+  padding: 8px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 12px;
 }
 
 .top-title {
-  font-size: 14px;
   font-weight: bold;
   letter-spacing: 0.03em;
 }
 
 .top-bgm {
-  font-size: 13px;
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 11px;
 }
 
-.top-bgm strong {
-  font-weight: bold;
-  margin-right: 6px;     /* 텍스트와 버튼 사이 여유 */
-}
-
-/* BGM 버튼 */
 .top-bgm button {
   border: 1px solid #bba8ff;
   background: #fff;
@@ -83,24 +87,22 @@ body {
   cursor: pointer;
 }
 
-/* =============================
+/* ===============================
    왼쪽 패널
-============================= */
-
+================================ */
 .left-panel {
-  background: #faf7ff;
   border-right: 1px solid #e2ddff;
+  background: #faf7ff;
   padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* 프로필 카드 복원 */
 .profile-card {
-  background: #ffffff;
   border: 1px solid #d3c7ff;
   padding: 10px;
+  background: #ffffff;
 }
 
 .profile-photo {
@@ -117,16 +119,36 @@ body {
   object-fit: cover;
 }
 
+.profile-name {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.profile-status {
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.profile-info {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #444;
+}
+
 /* 메뉴 */
 .menu {
   border: 1px solid #d3c7ff;
-  background: white;
+  background: #ffffff;
+  padding: 6px 0;
+  font-size: 12px;
 }
 
 .menu-title {
-  padding: 6px 10px;
   font-size: 11px;
-  background: #f8f5ff;
+  padding: 4px 10px;
+  color: #777;
   border-bottom: 1px dashed #e0ddff;
 }
 
@@ -136,6 +158,8 @@ body {
 
 .menu-item {
   padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.15s;
 }
 
 .menu-item:hover {
@@ -147,10 +171,9 @@ body {
   font-weight: bold;
 }
 
-/* =============================
+/* ===============================
    오른쪽 패널
-============================= */
-
+================================ */
 .right-panel {
   padding: 12px;
   display: grid;
@@ -188,10 +211,15 @@ body {
   align-items: center;
 }
 
-/* 콘텐츠 영역 */
+.miniroom-text {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* 콘텐츠 */
 .content {
   border: 1px solid #d3c7ff;
-  background: white;
+  background: #ffffff;
   padding: 10px;
   font-size: 11px;
 }
@@ -199,6 +227,7 @@ body {
 .content-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px dashed #e0ddff;
   padding-bottom: 4px;
   margin-bottom: 8px;
@@ -210,7 +239,7 @@ body {
 /* 다이어리 */
 #diary {
   position: relative;
-  padding-bottom: 120px;
+  padding-bottom: 150px;
 }
 
 .write-btn {
@@ -228,8 +257,8 @@ body {
 /* 사진첩 */
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 8px;
 }
 
 .photo-item {
@@ -255,16 +284,6 @@ body {
   border: 1px solid #d3c7ff;
   padding: 4px;
   font-size: 11px;
-  resize: vertical;
-}
-
-.guestbook-form button {
-  align-self: flex-end;
-  padding: 4px 10px;
-  font-size: 11px;
-  border: 1px solid #bba8ff;
-  background: #f5f0ff;
-  cursor: pointer;
 }
 
 .guestbook-list {
