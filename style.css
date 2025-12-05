@@ -340,3 +340,33 @@ body {
 .content-section.active {
   display: block;
 }
+/* ------------------------------- */
+/*        미니룸(miniroom) 강화     */
+/* ------------------------------- */
+
+.miniroom {
+  background: #fffdf8;
+  border: 1px solid #d3c7ff;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.miniroom-label {
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 6px;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+}
+
+.miniroom-scene {
+  background: #f7f3ff;
+  border: 1px solid #d3c7ff;
+  height: 140px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #888;
+  font-size: 12px;
+}
