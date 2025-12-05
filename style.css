@@ -1,0 +1,47 @@
+/* 로그인 페이지 기본 스타일 */
+
+body {
+  margin: 0;
+  background: #f5f0ff;
+  font-family: "돋움", sans-serif;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  width: 300px;
+  padding: 20px;
+  background: white;
+  border: 3px solid #c3b6ff;
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.login-box input {
+  width: 90%;
+  padding: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #d3c7ff;
+}
+
+.login-box button {
+  padding: 6px 20px;
+  border: 1px solid #bba8ff;
+  background: #f5f0ff;
+  cursor: pointer;
+}
+
+.login-error {
+  margin-top: 10px;
+  color: red;
+  font-size: 12px;
+}
