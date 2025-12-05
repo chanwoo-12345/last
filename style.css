@@ -1,30 +1,30 @@
-/* =========================================================
-   기본 설정
-========================================================= */
-
+/* 기본 초기화 */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+/* 배경 종이 무늬 */
 body {
-  font-family: "돋움", "Dotum", system-ui, -apple-system, BlinkMacSystemFont;
-  background: #f5f0ff url("bg-paper-grid.png") center/cover repeat fixed;
+  background: url("bg-paper-grid.png") center/cover fixed;
   display: flex;
   justify-content: center;
-  padding: 80px 10px; /* 위아래 중앙 여백 */
+  align-items: flex-start;
+  padding-top: 80px;
+  font-family: "돋움", Dotum, sans-serif;
+  min-height: 100vh;
   position: relative;
 }
 
-/* =========================================================
-   종이 3장 겹침 (삐뚤어짐 없음)
-========================================================= */
+/* =============================
+   종이 3장 레이어 (수정 완료)
+============================= */
 
 .paper-layer {
   position: absolute;
-  width: 900px;
-  height: 650px;
+  width: 980px;
+  height: 720px;
   background: white;
   border: 3px solid #c3b6ff;
   border-radius: 6px;
@@ -33,60 +33,60 @@ body {
   box-shadow: 0 0 12px rgba(0,0,0,0.15);
 }
 
-.layer1 { top: 120px; }
-.layer2 { top: 135px; opacity: 0.95; }
-.layer3 { top: 150px; opacity: 0.9; }
+.layer1 { top: 70px;  }
+.layer2 { top: 90px; opacity: 0.95; }
+.layer3 { top: 110px; opacity: 0.90; }
 
-/* =========================================================
+/* =============================
    메인 미니홈피 프레임
-========================================================= */
+============================= */
 
 .mini-home {
-  width: 900px;
-  min-height: 620px;
+  width: 980px;              /* ★ 가로 길이 증가 */
+  min-height: 720px;         /* ★ 종이 레이어와 높이 맞춤 */
   background: #ffffff;
   border: 3px solid #c3b6ff;
-  box-shadow: 0 0 12px rgba(0,0,0,0.15);
   display: grid;
   grid-template-columns: 260px 1fr;
+  margin-top: 130px;        /* 종이 레이어 위에 정확히 배치 */
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
   position: relative;
   z-index: 10;
 }
 
-/* =========================================================
-   상단바
-========================================================= */
+/* =============================
+   상단 바
+============================= */
 
-..top-bar {
+.top-bar {
   grid-column: 1 / 3;
   background: linear-gradient(90deg, #fbe5ff, #e0d7ff);
   border-bottom: 1px solid #c3b6ff;
-
-  padding: 4px 12px;        /* ← 기존보다 작게 */
-  height: 32px;             /* ← 높이 고정해서 깔끔하게 */
-  
+  padding: 6px 14px;        /* 높이 줄여서 옛날 미니홈 감성 */
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  font-size: 11px;          /* ← 폰트 작게 */
+  font-size: 12px;
+  height: 28px;
 }
 
 .top-title {
   font-weight: bold;
+  letter-spacing: 0.03em;
 }
 
+/* BGM 버튼 */
 .top-bgm button {
   border: 1px solid #bba8ff;
   background: #fff;
-  padding: 1px 4px;
-  font-size: 9px;
+  padding: 2px 6px;
+  font-size: 10px;
   cursor: pointer;
 }
 
-/* =========================================================
-   왼쪽 패널 (프로필 + 메뉴)
-========================================================= */
+/* =============================
+   왼쪽 패널
+============================= */
 
 .left-panel {
   background: #faf7ff;
@@ -97,11 +97,10 @@ body {
   gap: 16px;
 }
 
-/* ---------- 프로필 카드 ---------- */
-
+/* 프로필 */
 .profile-card {
   border: 1px solid #d3c7ff;
-  background: #ffffff;
+  background: white;
   padding: 10px;
 }
 
@@ -111,10 +110,6 @@ body {
   border: 1px solid #ccc;
   overflow: hidden;
   background: #f3f3f3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 8px;
 }
 
 .profile-photo img {
@@ -123,39 +118,18 @@ body {
   object-fit: cover;
 }
 
-.profile-name {
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 4px;
-}
-
-.profile-status {
-  font-size: 11px;
-  color: #666;
-  margin-bottom: 6px;
-}
-
-.profile-info {
-  font-size: 11px;
-  line-height: 1.5;
-  color: #444;
-}
-
-/* ---------- 메뉴 ---------- */
-
+/* 메뉴 */
 .menu {
   border: 1px solid #d3c7ff;
-  background: #ffffff;
-  padding: 6px 0;
+  background: white;
   font-size: 12px;
 }
 
 .menu-title {
+  padding: 6px 10px;
   font-size: 11px;
-  padding: 4px 10px;
-  color: #777;
-  border-bottom: 1px dashed #e0ddff; /* ★ 점선 */
   background: #f8f5ff;
+  border-bottom: 1px dashed #e0ddff;
 }
 
 .menu-list {
@@ -165,10 +139,7 @@ body {
 .menu-item {
   padding: 6px 10px;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  transition: background 0.15s;
-  border-bottom: 1px dashed #e0ddff; /* ★ 점선 추가 */ 
+  border-bottom: 1px dashed #eee;
 }
 
 .menu-item:hover {
@@ -180,9 +151,9 @@ body {
   font-weight: bold;
 }
 
-/* =========================================================
+/* =============================
    오른쪽 패널
-========================================================= */
+============================= */
 
 .right-panel {
   padding: 12px;
@@ -191,29 +162,25 @@ body {
   gap: 10px;
 }
 
-/* =========================================================
-   미니룸
-========================================================= */
-
+/* 미니룸 */
 .miniroom {
-  border: 1px solid #d3c7ff;
   background: #fffdf8;
+  border: 1px solid #d3c7ff;
   padding: 8px;
   display: grid;
   grid-template-columns: 120px 1fr;
-  gap: 8px;
+  gap: 10px;
   position: relative;
 }
 
 .miniroom-label {
   position: absolute;
-  top: -11px;
+  top: -10px;
   left: 10px;
-  font-size: 10px;
   background: #f5f0ff;
+  border: 1px solid #c3b6ff;
   padding: 0 6px;
-  border: 1px solid #d3c7ff;
-  border-bottom: none;
+  font-size: 10px;
 }
 
 .miniroom-scene {
@@ -222,19 +189,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 11px;
 }
 
-/* =========================================================
-   콘텐츠 전체 박스
-========================================================= */
-
+/* 콘텐츠 */
 .content {
   border: 1px solid #d3c7ff;
-  background: #ffffff;
+  background: white;
   padding: 10px;
-  font-size: 11px;
-  overflow: auto;
+  font-size: 12px;
 }
 
 .content-header {
@@ -245,72 +207,44 @@ body {
   margin-bottom: 8px;
 }
 
-.content-title {
-  font-weight: bold;
-}
-
-.content-date {
-  font-size: 10px;
-  color: #999;
-}
-
-/* 콘텐츠 전환 */
 .content-section { display: none; }
 .content-section.active { display: block; }
 
-/* =========================================================
-   다이어리
-========================================================= */
-
+/* 다이어리 */
 #diary {
   position: relative;
-  padding-bottom: 150px;
+  padding-bottom: 120px;
 }
 
 .write-btn {
   position: absolute;
   right: 20px;
-  bottom: 10px;
+  bottom: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
   background: #cdb7ff;
   color: white;
-  border: 1px solid #b39ce6;
-  padding: 6px 14px;
   border-radius: 6px;
-  font-size: 14px;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-  transition: 0.2s;
 }
 
-.write-btn:hover {
-  background: #bfa5ff;
-}
-
-/* =========================================================
-   사진첩
-========================================================= */
-
+/* 사진첩 */
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
 }
 
 .photo-item {
   border: 1px solid #ddd;
   background: #fafafa;
-  aspect-ratio: 3 / 2;
+  height: 70px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 10px;
-  color: #777;
+  align-items: center;
 }
 
-/* =========================================================
-   방명록
-========================================================= */
-
+/* 방명록 */
 .guestbook-form {
   display: flex;
   flex-direction: column;
