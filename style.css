@@ -23,29 +23,29 @@ body {
 ============================= */
 
 .paper-layer {
+  width: 930px;   /* mini-home보다 30px씩 넓게 */
+  height: 690px;  /* 720 → 690 */
   position: absolute;
-  width: 980px;
-  height: 720px;
   background: white;
   border: 3px solid #c3b6ff;
   border-radius: 6px;
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 0 0 12px rgba(0,0,0,0.15);
-  z-index: 1;  /* ★ mini-home보다 뒤로 배치 */
+  z-index: 1;
 }
 
-.layer1 { top: 70px;  }
-.layer2 { top: 90px; opacity: 0.95; }
-.layer3 { top: 110px; opacity: 0.90; }
+.layer1 { top: 65px;  }
+.layer2 { top: 82px; opacity: 0.95; }
+.layer3 { top: 100px; opacity: 0.90; }
 
 /* =============================
    메인 미니홈피 프레임
 ============================= */
 
 .mini-home {
-  width: 980px;              /* ★ 가로 길이 증가 */
-  min-height: 720px;         /* ★ 종이 레이어와 높이 맞춤 */
+  width: 900px;              /* ★  */
+  min-height: 650px;         /* ★  */
   background: #ffffff;
   border: 3px solid #c3b6ff;
   display: grid;
