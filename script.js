@@ -25,116 +25,100 @@ if (loginBtn) {
 
 
 /* ===============================
-    2. 메뉴 클릭 시 화면 전환
+   🎵 BGM 재생 컨트롤
 =============================== */
-
-const menuItems = document.querySelectorAll(".menu-item");
-const sections = document.querySelectorAll(".content-section");
-
-if (menuItems.length > 0) {
-  menuItems.forEach(item => {
-    item.addEventListener("click", () => {
-
-      // 모든 메뉴에서 active 제거
-      menuItems.forEach(m => m.classList.remove("active"));
-      item.classList.add("active");
-
-      // 모든 섹션 숨기기
-      sections.forEach(sec => sec.classList.remove("active"));
-
-      // 타겟 화면 보여주기
-      const target = item.getAttribute("data-target");
-      const targetSection = document.getElementById(target);
-
-      if (targetSection) {
-        targetSection.classList.add("active");
-
-        // 상단 제목도 변경
-        const title = document.querySelector(".content-title");
-        if (title) title.textContent = item.textContent.trim();
-      }
-        document.querySelector(".content-section.active")?.scrollTo(0, 0);
-    });
-  });
-}
-
-
-/* ===============================
-    3. 오늘 날짜 자동 표시
-=============================== */
-
-function setTodayDate() {
-  const dateBox = document.querySelector(".content-date");
-  if (!dateBox) return;
-
-  const today = new Date();
-  const y = today.getFullYear();
-  const m = String(today.getMonth() + 1).padStart(2, "0");
-  const d = String(today.getDate()).padStart(2, "0");
-
-  dateBox.textContent = `${y}.${m}.${d}`;
-}
-
-setTodayDate();
-
-
-/* ===============================
-    4. 방명록 기능
-=============================== */
-
-const guestForm = document.getElementById("guestbook-form");
-const guestList = document.getElementById("guestbook-list");
-
-if (guestForm) {
-  guestForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const name = document.getElementById("guest-name").value;
-    const message = document.getElementById("guest-message").value;
-
-    if (!name || !message) return;
-
-    const entry = document.createElement("div");
-    entry.classList.add("guestbook-item");
-
-    entry.innerHTML = `
-      <p class="guestbook-meta"><strong>${name}</strong></p>
-      <p class="guestbook-text">${message.replace(/\n/g, "<br>")}</p>
-    `;
-
-    guestList.prepend(entry);
-    guestForm.reset();
-  });
-}
-
-
-/* ===============================
-    5. BGM 기능
-=============================== */
-
-// 오디오 요소 연결
-let bgm = document.getElementById("bgm");
-bgm.loop = true;
-
-
+const bgm = document.getElementById("bgm");
 const playBtn = document.getElementById("play-btn");
 const pauseBtn = document.getElementById("pause-btn");
 
-// 재생 버튼
-if (playBtn) {
-  playBtn.addEventListener("click", () => {
-    bgm.play();
-    playBtn.classList.add("active");
-    pauseBtn.classList.remove("active");
-  });
+playBtn.addEventListener("click", () => {
+  bgm.play();
+  playBtn.classList.add("active");
+  pauseBtn.classList.remove("active");
+});
+
+pauseBtn.addEventListener("click", () => {
+  bgm.pause();
+  pauseBtn.classList.add("active");
+  playBtn.classList.remove("active");
+});
+
+
+/* ===============================
+   📌 페이지 탭 전환 (홈/다이어리/사진첩/방명록)
+=============================== */
+const menuItems = document.querySelectorAll(".menu-item");
+const contentSections = document.querySelectorAll(".content-section");
+const contentTitle = document.querySelector(".content-title");
+const contentDate = document.querySelector(".content-date");
+
+function showSection(target) {
+  // 모든 섹션 숨기기
+  contentSections.forEach(sec => sec.classList.remove("active"));
+
+  // 해당 섹션 보여주기
+  const section = document.getElementById(target);
+  if (section) section.classList.add("active");
+
+  // 제목 변경
+  const titles = {
+    home: "홈",
+    diary: "다이어리",
+    photo: "사진첩",
+    guestbook: "방명록"
+  };
+  contentTitle.textContent = titles[target];
+
+  // 날짜 표시 (오늘 날짜)
+  const today = new Date();
+  contentDate.textContent =
+    `${today.getFullYear()}.${String(today.getMonth()+1).padStart(2,"0")}.${String(today.getDate()).padStart(2,"0")}`;
 }
 
-if (pauseBtn) {
-  pauseBtn.addEventListener("click", () => {
-    bgm.pause();
-    pauseBtn.classList.add("active");
-    playBtn.classList.remove("active");
+menuItems.forEach(item => {
+  item.addEventListener("click", () => {
+    // 메뉴 active 변경
+    menuItems.forEach(i => i.classList.remove("active"));
+    item.classList.add("active");
+
+    const target = item.dataset.target;
+    showSection(target);
   });
-}
+});
+
+showSection("home"); // 처음 로딩 시 홈 활성화
+
+
+/* ===============================
+   📝 방명록 기능
+=============================== */
+const guestForm = document.getElementById("guestbook-form");
+const guestList = document.getElementById("guestbook-list");
+
+guestForm?.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("guest-name").value.trim();
+  const message = document.getElementById("guest-message").value.trim();
+
+  if (!name || !message) return;
+
+  const item = document.createElement("div");
+  item.classList.add("guestbook-item");
+
+  const today = new Date();
+  const dateStr =
+    `${today.getFullYear()}.${String(today.getMonth()+1).padStart(2,"0")}.${String(today.getDate()).padStart(2,"0")}`;
+
+  item.innerHTML = `
+    <div class="guestbook-meta">${name} | ${dateStr}</div>
+    <div class="guestbook-text">${message}</div>
+  `;
+
+  guestList.prepend(item);
+
+  guestForm.reset();
+});
+
 
 
