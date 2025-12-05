@@ -302,3 +302,41 @@ body {
   color: #777;
   border-bottom: 1px dashed #e0ddff;
 }
+/* ------------------------------- */
+/*        본문(content) 영역        */
+/* ------------------------------- */
+
+.content {
+  background: #ffffff;
+  border: 1px solid #d3c7ff;
+  padding: 12px;
+  font-size: 12px;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #dcd5ff;
+}
+
+.content-title {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.content-date {
+  font-size: 11px;
+  color: #888;
+}
+
+.content-section {
+  display: none;
+  font-size: 12px;
+}
+
+.content-section.active {
+  display: block;
+}
