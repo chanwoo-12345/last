@@ -262,3 +262,43 @@ body {
   line-height: 1.5;
   color: #444;
 }
+/* ------------------------------- */
+/*             메뉴 스타일          */
+/* ------------------------------- */
+
+.menu {
+  border: 1px solid #d3c7ff;
+  background: #ffffff;
+  padding: 6px 0;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px dashed #e0ddff;
+}
+
+.menu-item:hover {
+  background: #f4f0ff;
+}
+
+.menu-item.active {
+  background: #e5ddff;
+  font-weight: bold;
+}
+
+.menu-title {
+  font-size: 11px;
+  padding: 4px 10px;
+  color: #777;
+  border-bottom: 1px dashed #e0ddff;
+}
