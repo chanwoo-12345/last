@@ -1,5 +1,5 @@
 /* ===============================
-   기본 초기화
+   RESET
 ================================ */
 * {
   margin: 0;
@@ -8,16 +8,16 @@
 }
 
 body {
+  font-family: "돋움", Dotum, sans-serif;
   background: #f9f4ff url("bg-paper-grid.png") repeat;
   background-size: 300px 300px;
-  font-family: "돋움", Dotum, sans-serif;
   display: flex;
   justify-content: center;
   padding: 60px 10px;
 }
 
 /* ===============================
-   종이 레이어 (반듯하게)
+   2장 종이 (반듯하게 복원)
 ================================ */
 .memo-layer {
   background: #f7f0ff;
@@ -26,35 +26,35 @@ body {
   border-radius: 14px;
   box-shadow: 0 16px 32px rgba(0,0,0,0.18);
   position: relative;
-  top: 10px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .memo-inner {
-  background: #ffffff;
+  background: white;
   padding: 35px;
   border-radius: 12px;
   box-shadow: 0 12px 28px rgba(0,0,0,0.15);
 }
 
 /* ===============================
-   미니홈피 기본 프레임 (예전 버전)
+   MINI-HOME 
 ================================ */
 .mini-home {
+  transform: none !important;
   width: 900px;
   min-height: 600px;
   background: #ffffff;
   border: 3px solid #c3b6ff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
   display: grid;
   grid-template-columns: 260px 1fr;
+  gap: 0;
   position: relative;
-  transform: none !important;
 }
 
 /* ===============================
-   상단 바
+   TOP BAR 
 ================================ */
 .top-bar {
   grid-column: 1 / 3;
@@ -81,14 +81,14 @@ body {
 
 .top-bgm button {
   border: 1px solid #bba8ff;
-  background: #fff;
+  background: white;
   padding: 2px 6px;
   font-size: 10px;
   cursor: pointer;
 }
 
 /* ===============================
-   왼쪽 패널
+   LEFT PANEL 
 ================================ */
 .left-panel {
   border-right: 1px solid #e2ddff;
@@ -109,8 +109,8 @@ body {
   width: 100%;
   height: 220px;
   border: 1px solid #ccc;
-  overflow: hidden;
   background: #f3f3f3;
+  overflow: hidden;
 }
 
 .profile-photo img {
@@ -172,7 +172,7 @@ body {
 }
 
 /* ===============================
-   오른쪽 패널
+   RIGHT PANEL
 ================================ */
 .right-panel {
   padding: 12px;
@@ -233,8 +233,13 @@ body {
   margin-bottom: 8px;
 }
 
-.content-section { display: none; }
-.content-section.active { display: block; }
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
 
 /* 다이어리 */
 #diary {
@@ -266,8 +271,8 @@ body {
   background: #fafafa;
   height: 70px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 /* 방명록 */
