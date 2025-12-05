@@ -7,31 +7,47 @@
 </head>
 <body>
 
-  <div class="home-bg"></div> <!-- 보라색 종이 배경 -->
-
-  <!-- 3장 레이어 -->
+  <!-- =========================
+       종이 3장 겹침 레이어
+  ========================== -->
   <div class="paper-layer layer1"></div>
   <div class="paper-layer layer2"></div>
   <div class="paper-layer layer3"></div>
 
-  <!-- 실제 컨텐츠 박스 -->
+  <!-- =========================
+       메인 미니홈피 프레임
+  ========================== -->
   <div class="mini-home">
 
-    <!-- 상단바 -->
+    <!-- ===== 상단바 ===== -->
     <div class="top-bar">
       <div class="top-title">✩ 성준님의 미니홈피 ✩</div>
-      <div class="top-bgm">BGM 영역</div>
+
+      <div class="top-bgm">
+        <button id="play-btn">▶</button>
+        <button id="pause-btn">⏸</button>
+      </div>
     </div>
 
-    <!-- 왼쪽 프로필 패널 -->
+    <!-- ===== 왼쪽 패널 ===== -->
     <aside class="left-panel">
+
+      <!-- 프로필 카드 -->
       <section class="profile-card">
-        <div class="profile-photo">프로필 사진</div>
+        <div class="profile-photo">
+          <img src="profile.jpg" alt="프로필 사진">
+        </div>
+
         <div class="profile-name">성준이</div>
         <div class="profile-status">상태 메시지</div>
-        <div class="profile-info">기본 정보</div>
+        <div class="profile-info">
+          나이: 20대<br>
+          지역: 한국<br>
+          취미: 코딩, 디자인
+        </div>
       </section>
 
+      <!-- 메뉴 -->
       <nav class="menu">
         <ul class="menu-list">
           <li class="menu-item active" data-target="home">홈</li>
@@ -40,54 +56,79 @@
           <li class="menu-item" data-target="guestbook">방명록</li>
         </ul>
       </nav>
+
     </aside>
 
-    <!-- 오른쪽 패널 -->
+    <!-- ===== 오른쪽 패널 ===== -->
     <main class="right-panel">
 
-      <!-- 미니룸 -->
+      <!-- ===== 미니룸 ===== -->
       <section class="miniroom">
         <div class="miniroom-label">MINIROOM</div>
         <div class="miniroom-scene">미니룸 이미지</div>
+
+        <div class="miniroom-text">
+          성준님의 방입니다.<br>
+          어서오세요!
+        </div>
       </section>
 
-      <!-- 컨텐츠 -->
+      <!-- =========================
+           콘텐츠 영역
+      ========================== -->
       <section class="content">
 
+        <!-- 콘텐츠 헤더 -->
         <div class="content-header">
           <div class="content-title">홈</div>
           <div class="content-date">YYYY.MM.DD</div>
         </div>
 
+        <!-- ===== 홈 ===== -->
         <div class="content-section active" id="home">
-          홈 화면입니다.
+          <div class="home-intro">
+            안녕하세요! 성준님의 미니홈피 방문을 환영합니다 ^_^<br>
+            왼쪽 메뉴를 눌러 다른 공간도 둘러보세요!
+          </div>
         </div>
 
+        <!-- ===== 다이어리 ===== -->
         <div class="content-section" id="diary">
-          다이어리 영역입니다.
+          다이어리 공간입니다.
+
+          <button class="write-btn">✎ 글쓰기</button>
         </div>
 
+        <!-- ===== 사진첩 ===== -->
         <div class="content-section" id="photo">
-          사진첩 영역입니다.
+          <div class="photo-grid">
+            <div class="photo-item">사진 1</div>
+            <div class="photo-item">사진 2</div>
+            <div class="photo-item">사진 3</div>
+          </div>
         </div>
 
+        <!-- ===== 방명록 ===== -->
         <div class="content-section" id="guestbook">
           <h3>방명록</h3>
 
-          <form id="guestbook-form">
+          <form id="guestbook-form" class="guestbook-form">
             <input type="text" id="guest-name" placeholder="이름" required>
             <textarea id="guest-message" placeholder="메시지를 남겨주세요" required></textarea>
             <button type="submit">등록</button>
           </form>
 
-          <div id="guestbook-list"></div>
+          <div id="guestbook-list" class="guestbook-list"></div>
         </div>
 
       </section>
     </main>
+
   </div>
 
+  <!-- JS 파일 -->
   <script src="script.js"></script>
 </body>
 </html>
+
 
