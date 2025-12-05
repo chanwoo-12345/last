@@ -57,15 +57,19 @@ body {
    상단바
 ========================================================= */
 
-.top-bar {
+..top-bar {
   grid-column: 1 / 3;
   background: linear-gradient(90deg, #fbe5ff, #e0d7ff);
   border-bottom: 1px solid #c3b6ff;
-  padding: 8px 16px;
+
+  padding: 4px 12px;        /* ← 기존보다 작게 */
+  height: 32px;             /* ← 높이 고정해서 깔끔하게 */
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
+
+  font-size: 11px;          /* ← 폰트 작게 */
 }
 
 .top-title {
@@ -75,8 +79,8 @@ body {
 .top-bgm button {
   border: 1px solid #bba8ff;
   background: #fff;
-  padding: 2px 6px;
-  font-size: 10px;
+  padding: 1px 4px;
+  font-size: 9px;
   cursor: pointer;
 }
 
@@ -146,6 +150,14 @@ body {
   font-size: 12px;
 }
 
+.menu-title {
+  font-size: 11px;
+  padding: 4px 10px;
+  color: #777;
+  border-bottom: 1px dashed #e0ddff; /* ★ 점선 */
+  background: #f8f5ff;
+}
+
 .menu-list {
   list-style: none;
 }
@@ -156,6 +168,7 @@ body {
   display: flex;
   justify-content: space-between;
   transition: background 0.15s;
+  border-bottom: 1px dashed #e0ddff; /* ★ 점선 추가 */ 
 }
 
 .menu-item:hover {
