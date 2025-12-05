@@ -7,7 +7,8 @@
 
 /* 배경 종이 무늬 */
 body {
-  background: url("bg-paper-grid.png") center/cover fixed;
+  background: #f9f4ff url("bg-paper-grid.png") repeat;
+  background-size: 280px 280px;  /* 원하는 격자 크기 (예전 느낌) */
   display: flex;
   justify-content: center;
   align-items: flex-start;
