@@ -18,7 +18,7 @@ function login() {
 document.getElementById("login-btn").addEventListener("click", login);
 
 // -----------------------------
-//   메뉴 클릭 시 화면 전환 기능
+//   메뉴 클릭 시 화면 전환 기능이다
 // -----------------------------
 
 const menuItems = document.querySelectorAll(".menu-item");
