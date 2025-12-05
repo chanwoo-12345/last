@@ -53,6 +53,7 @@ if (menuItems.length > 0) {
         const title = document.querySelector(".content-title");
         if (title) title.textContent = item.textContent.trim();
       }
+        document.querySelector(".content-section.active")?.scrollTo(0, 0);
     });
   });
 }
